@@ -1,7 +1,7 @@
 // paste on https://jscomplete.com/repl/
 
 const Card = (props) => {
-	return (
+  return (
     <div style={{ margin: '1em' }}>
       <img src={props.avatar_url} style={{ height: '80px', borderRadious: '40px' }} />
       <div style={{ display: 'inline-block', paddingLeft: '10px' }}>
@@ -17,7 +17,7 @@ const Card = (props) => {
 };
 
 const CardList = (props) => {
-	return (
+  return (
     <div>
       {props.cards.map(card => <Card key={card.id} {...card} />)}
     </div>
@@ -25,9 +25,9 @@ const CardList = (props) => {
 }
 
 class Form extends React.Component {
-	state = { userName: '' };
+  state = { userName: '' };
   
-	handleSubmit = (event) => {
+  handleSubmit = (event) => {
     event.preventDefault();
     axios
       .get(`https://api.github.com/users/${this.state.userName}`)
@@ -41,7 +41,7 @@ class Form extends React.Component {
     this.setState({ userName: event.target.value });
   };
 
-	render() {
+  render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <input
@@ -57,13 +57,13 @@ class Form extends React.Component {
 }
 
 class App extends React.Component {
-	state = { cards: [] };
+  state = { cards: [] };
   
   addNewCard = (card) => {
     this.setState(prevState => ({ cards: prevState.cards.concat(card) }));
   };
   
-	render() {
+  render() {
     return (
       <div>
         <Form onSubmit={this.addNewCard} />
